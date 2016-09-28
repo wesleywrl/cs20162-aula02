@@ -1,5 +1,5 @@
 
-package exercicio1;
+package com.github.wesleywrl.construcao;
 
 public class Exercicio1 {
     public static int numerosNaturais(int n){
