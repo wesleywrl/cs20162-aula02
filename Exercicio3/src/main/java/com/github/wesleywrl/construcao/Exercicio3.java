@@ -3,7 +3,6 @@ package com.github.wesleywrl.construcao;
 
 
 public class Exercicio3 {
-
    
     public static int produtoPotencia(int x, int y) {
         int potencia = 0, i;
