@@ -5,8 +5,6 @@
 
 package com.github.kyriosdata.exemplo;
 
-import java.time.LocalDate;
-
 /**
  * Implementação do cálculo de dia da semana.
  *
@@ -14,19 +12,52 @@ import java.time.LocalDate;
  * LARSEN, K. S. Computing the Day of the week,
  * Dr. Dobb´s Journal, april, 1995.
  *
- * <p>Convém ressaltar a existência da classe
- * {@link java.time.LocalDate} e, em particular,
- * do método {@link LocalDate#getDayOfWeek()},
- * que oferece funcionalidade similar.
- *
  */
-public class Calendario
-{
+public final class Calendario {
+
+    /**
+     * Maior valor para um dia.
+     */
+    public static final int MAIOR_DIA = 31;
+
+    /**
+     * Valor correspondente ao mês de janeiro.
+     */
+    public static final int JANEIRO = 1;
+
+    /**
+     * Valor correspondente ao mês de fevereiro.
+     */
+    public static final int FEVEREIRO = 2;
+
+    /**
+     * Valor correspondente ao mês de dezembro.
+     */
+    public static final int DEZEMBRO = 12;
+
+    /**
+     * Total de dias em uma semana.
+     */
+    public static final int DIAS_DA_SEMANA = 7;
+
+    /**
+     * Ano de referência para o calendário gregoriano?!
+     */
+    public static final int CALENDARIO_GREGORIANO = 1753;
+
+    /**
+     * Classe contendo apenas operações "static".
+     * Evita que instância seja criada desnecessariamente.
+     */
+    private Calendario() {
+        // Segue recomendação de Checkstyle.
+    }
+
     /**
      * Obtém dia da semana para a data.
-     * @param d O dia da data. Valor entre 1 e 31, inclusive.
-     * @param m O mês da data. Valor entre 1 e 12, inclusive.
-     * @param a O ano da data. Valor maior que 1752.
+     * @param dia O dia da data. Valor entre 1 e 31, inclusive.
+     * @param mes O mês da data. Valor entre 1 e 12, inclusive.
+     * @param ano O ano da data. Valor maior que 1752.
      *
      * @return O dia da semana correspondente à data. O valor 0 para
      * segunda-feira, 1 para terça-feira, 2 para quarta-feira e
@@ -36,26 +67,29 @@ public class Calendario
      * ou maior que 31), o mês for inválido (menor que 1 ou maior que 12)
      * ou o ano for menor que 1753.
      */
-    public static int diaDaSemana(int d, int m, int a) {
-        if (d < 1 || d > 31) {
+    public static int diaDaSemana(final int dia, final int mes, final int ano) {
+        int m = mes;
+        int a = ano;
+
+        if (dia < 1 || dia > MAIOR_DIA) {
             throw new IllegalArgumentException("dia inválido");
         }
 
-        if (m < 1 || m > 12) {
+        if (mes < 1 || mes > DEZEMBRO) {
             throw new IllegalArgumentException("mês inválido");
         }
 
-        if (a < 1753) {
+        if (ano < CALENDARIO_GREGORIANO) {
             throw new IllegalArgumentException("ano inválido");
         }
 
-        if (m == 1 || m == 2) {
-            m = m + 12;
+        if (mes == JANEIRO || mes == FEVEREIRO) {
+            m = m + DEZEMBRO;
             a = a - 1;
         }
 
-        int s = d + 2 * m + 3 * (m + 1) / 5 + a + a / 4 - a / 100 + a / 400;
+        int s = dia + 2 * m + 3 * (m + 1) / 5 + a + a / 4 - a / 100 + a / 400;
 
-        return s % 7;
+        return s % DIAS_DA_SEMANA;
     }
 }
