@@ -23,10 +23,10 @@ under the License.
     <link>https://github.com/kyriosdata/exemplo</link>
     <description>com.github.kyriosdata:exemplo - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2016 Instituto de Inform√°tica (UFG) - F√°brica de Software</copyright>
+    <copyright>&#169;2016 Instituto de Inform·tica (UFG) - F·brica de Software</copyright>
     <item>
-      <title>File: 2,
-             Errors: 16,
+      <title>File: 3,
+             Errors: 18,
              Warnings: 0,
              Infos: 0
       </title>
@@ -56,6 +56,20 @@ under the License.
                 </td>
                 <td>
                   10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/kyriosdata/exemplo/checkstyle.html#PackageInfo.java">PackageInfo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                           <tr>
